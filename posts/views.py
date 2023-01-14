@@ -1,16 +1,17 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 # передача строк в ответ
-# def hello(request):
-#     return HttpResponse("GeekTech")
+def hello(request):
+    return HttpResponse("GeekTech")
 
 # передача списка
 # def hello(request):
 #     my_list = [1, 2, 3, 4, "String"]
 #     return HttpResponse(my_list)
 
-#передача html-кода
+# передача html-кода
 # def hello(request):
 #     body = """
 #     <h1>Привет</h1>
@@ -24,6 +25,6 @@ from django.shortcuts import render
 #     return HttpResponse(my_dict)
 
 # передача заголовков и статуса ответа
-def hello(request):
-    headers = {"name": "Chyngyz"}
-    return HttpResponse("GeekTech", status=200, headers=headers)
+# def hello(request):
+#     headers = {"name": "Chyngyz"}
+#     return HttpResponse("GeekTech", status=200, headers=headers)
