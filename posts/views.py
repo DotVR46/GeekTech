@@ -18,3 +18,9 @@ def about(request):
         "title": "О нас",
     }
     return render(request, "about.html", context)
+
+def contacts(request):
+    context = {
+        "title": "Контакты",
+    }
+    return render(request, "contacts.html", context)
