@@ -4,6 +4,13 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
 
+
+
+    <form action="{% url 'post-delete' post.id %}" method="post">{% csrf_token %}
+        <button type="submit">Удалить пост</button>
+    </form>
+
+
 <a href="{% url 'about-page' %}">О нас</a>
 <a href="{% url 'contacts-page' %}">Контакты</a>
 <a href="{% url 'main-page' %}">На главную</a>
