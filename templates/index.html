@@ -8,6 +8,7 @@
     <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
     <br>
 {% endfor %}
+    <br>
     <form action="{% url 'post-create' %}" method="get">{% csrf_token %}
         <button type="submit">Создать пост</button>
     </form>
