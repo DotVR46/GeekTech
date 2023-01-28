@@ -4,6 +4,7 @@ from posts.models import Post
 from django.views import generic
 from django.urls import reverse_lazy
 
+
 class IndexView(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=True)
@@ -36,6 +37,7 @@ class PostUpdateView(generic.UpdateView):
     fields = ["title", "content"]
     success_url = reverse_lazy("main-page")
 
+
 # def get_post(request, post_id):
 #     try:
 #         post = Post.objects.get(id=post_id)
@@ -49,11 +51,13 @@ def about(request):
     }
     return render(request, "about.html", context)
 
+
 def contacts(request):
     context = {
         "title": "Контакты",
     }
     return render(request, "contacts.html", context)
+
 
 # передача строк в ответ
 def hello(request):
