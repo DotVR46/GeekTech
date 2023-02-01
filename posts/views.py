@@ -73,6 +73,8 @@ class PostUpdateView(generic.UpdateView):
 #     except Post.DoesNotExist:
 #         raise Http404("Такого поста нет!")
 #     return render(request, "post_detail.html", {"post": post})
+
+
 class AboutView(generic.TemplateView):
     template_name = "about.html"
     extra_context = {"title": "О нас"}
