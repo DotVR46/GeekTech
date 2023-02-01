@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from posts.models import Post, Comment
 from django.views import generic
 from django.urls import reverse_lazy
-from posts.forms import CommentForm
+from posts.forms import CommentForm, PostForm
 
 
 class IndexView(generic.ListView):
@@ -36,7 +36,6 @@ class PostDetailView(generic.DetailView):
 
         return redirect("post-detail", pk)
 
-
     # def post(self, request, pk):
     #     post = Post.objects.get(pk=pk)
     #     name = request.POST.get("name", None)
@@ -52,7 +51,7 @@ class PostDetailView(generic.DetailView):
 class PostCreateView(generic.CreateView):
     model = Post
     template_name = "post_create.html"
-    fields = ["title", "content"]
+    form_class = PostForm
     success_url = reverse_lazy("main-page")
 
 
@@ -64,7 +63,7 @@ class PostDeleteView(generic.DeleteView):
 class PostUpdateView(generic.UpdateView):
     model = Post
     template_name = "post_update.html"
-    fields = ["title", "content"]
+    form_class = PostForm
     success_url = reverse_lazy("main-page")
 
 
@@ -74,17 +73,24 @@ class PostUpdateView(generic.UpdateView):
 #     except Post.DoesNotExist:
 #         raise Http404("Такого поста нет!")
 #     return render(request, "post_detail.html", {"post": post})
-
-def about(request):
-    context = {
-        "title": "О нас",
-    }
-    return render(request, "about.html", context)
+class AboutView(generic.TemplateView):
+    template_name = "about.html"
+    extra_context = {"title": "О нас"}
 
 
-def contacts(request):
-    context = {
-        "title": "Контакты",
-    }
-    return render(request, "contacts.html", context)
+class ContactsView(generic.TemplateView):
+    template_name = "contacts.html"
+    extra_context = {"title": "Контакты"}
 
+# def about(request):
+#     context = {
+#         "title": "О нас",
+#     }
+#     return render(request, "about.html", context)
+
+
+# def contacts(request):
+#     context = {
+#         "title": "Контакты",
+#     }
+#     return render(request, "contacts.html", context)
