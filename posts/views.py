@@ -4,6 +4,16 @@ from posts.models import Post, Comment
 from django.views import generic
 from django.urls import reverse_lazy
 from posts.forms import CommentForm, PostForm
+from .serializers import PostSerializer
+from rest_framework import generics
+
+class PostListAPIView(generics.ListAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+
+class PostCreateAPIView(generics.CreateAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
 
 
 class IndexView(generic.ListView):

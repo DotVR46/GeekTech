@@ -19,7 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls")),
     path("users/", include("django.contrib.auth.urls")),
+    path("", include("social_django.urls", namespace="social")),
     path("", include("posts.urls")),
     path("", include("users.urls")),
 ]
